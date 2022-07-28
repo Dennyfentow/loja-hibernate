@@ -19,7 +19,7 @@ public class CadastroDeProduto {
 		Produto produto = produtoDao.buscarPorId(1l);
 		System.out.println(produto.getPreco());
 		
-		List<Produto> todos = produtoDao.buscarPorNome("Xiaomi Redmi");
+		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
 		todos.forEach(p -> System.out.println(p.getNome()));
 	}
 
