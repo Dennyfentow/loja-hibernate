@@ -11,7 +11,18 @@ public class CategoriaDao {
 		this.em = em;
 	}
 	
-	public void cadastrar(Categoria produto) {
-		this.em.persist(produto);
+	public void cadastrar(Categoria categoria) {
+		this.em.persist(categoria);
+	}
+	
+	// só para garatir o retorno para o estado MANAGED
+	public void ataualizar(Categoria categoria) {
+		this.em.merge(categoria);
+	}
+	
+	// necessário estar no estado MANAGED
+	public void remover(Categoria categoria) {
+		categoria = em.merge(categoria);
+		this.em.remove(categoria);
 	}
 }

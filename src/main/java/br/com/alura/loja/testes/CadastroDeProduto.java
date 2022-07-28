@@ -27,7 +27,10 @@ public class CadastroDeProduto {
 		em.flush(); // -> DETACHED
 		
 //		em.getTransaction().commit(); // -> DETACHED
-		
+		em.clear();
+		celulares = em.merge(celulares);
+		em.remove(celulares); // -> REMOVED
+		em.flush();
 		em.close();
 	}
 }
