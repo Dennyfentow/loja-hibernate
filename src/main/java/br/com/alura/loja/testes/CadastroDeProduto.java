@@ -17,9 +17,17 @@ public class CadastroDeProduto {
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 
-		em.persist(celulares);
+		em.persist(celulares); // -> MANAGED INSERT
+		celulares.setNome("XPTO"); // MANAGED UPDATE
+		em.flush(); // -> DETACHED
+		em.clear(); // -> DETACHED
 		
-		em.getTransaction().commit();
+		celulares = em.merge(celulares); // -> MANAGED SELECT
+		celulares.setNome("1234"); // MANAGED UPDATE
+		em.flush(); // -> DETACHED
+		
+//		em.getTransaction().commit(); // -> DETACHED
+		
 		em.close();
 	}
 }
