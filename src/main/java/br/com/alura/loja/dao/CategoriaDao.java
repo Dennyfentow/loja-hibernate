@@ -16,7 +16,7 @@ public class CategoriaDao {
 	}
 	
 	// só para garatir o retorno para o estado MANAGED
-	public void ataualizar(Categoria categoria) {
+	public void atualizar(Categoria categoria) {
 		this.em.merge(categoria);
 	}
 	
